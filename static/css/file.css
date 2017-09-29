@@ -1,0 +1,30 @@
+h1 {
+  color: green;
+  border: 7px solid #ccc;
+  font-family: cursive, fantasy;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+body {
+  background-image: url("tower-bridge-2262707_1280.png");
+  background-color: blue;
+  background-repeat: no-repeat;
+  background-size: 250%;
+  background-position: center;
+}
+
+
+p {
+    font-family: cursive, fantasy, serif;
+    font-size: 40px;
+    border: 1px solid #ccc;
+}
+
+div {
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+}

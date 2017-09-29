@@ -1,0 +1,27 @@
+h1 {
+  color: blue;
+}
+
+a {
+  color: purple;
+  border: 1px solid #ccc;
+  text-decoration-color: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+p {
+  margin: 1px
+  padding: 0;
+}
+
+#content {
+  color: brown;
+}
+
+ul li {
+  color: red;
+
+}
