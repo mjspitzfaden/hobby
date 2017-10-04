@@ -40,11 +40,36 @@ class MainHandler(TemplateHandler):
     self.render_template("index.html", {'names': names, 'amount': 42.55})
 
 class PageHandler(TemplateHandler):
+  def post(self, page):
+        print('PageHandler post')
+        name = self.get_body_argument('name')
+        email = self.get_body_argument('mail')
+        text = self.get_body_argument('comment')
+        print(name, email, text)
+        response = SES_CLIENT.send_email(
+        Destination={
+            'ToAddresses': ['mjspitzfaden@aol.com'],
+        },
+        Message={
+            'Body': {
+            'Text': {
+                'Charset': 'UTF-8',
+                'Data': text,
+            },
+            },
+            'Subject': {'Charset': 'UTF-8', 'Data': 'Portfolio Contact'},
+        },
+        Source='mjspitzfaden@aol.com',
+        )
+        messages = 'Thank you, your email has been sent!'
+        self.render_template('cform.html', {'messages': messages})
+
   def get(self, page):
     self.set_header(
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
     self.render_template(page, {})
+
 
 def make_app():
   return tornado.web.Application([
