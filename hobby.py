@@ -48,7 +48,7 @@ class PageHandler(TemplateHandler):
         print(name, email, text)
         response = SES_CLIENT.send_email(
         Destination={
-            'ToAddresses': ['mjspitzfaden@aol.com'],
+            'ToAddresses': [email],
         },
         Message={
             'Body': {
@@ -59,7 +59,7 @@ class PageHandler(TemplateHandler):
             },
             'Subject': {'Charset': 'UTF-8', 'Data': 'Portfolio Contact'},
         },
-        Source='mjspitzfaden@aol.com',
+        Source='mjspitzfaden@gmail.com',
         )
         messages = 'Thank you, your email has been sent!'
         self.render_template('cform.html', {'messages': messages})
