@@ -3,6 +3,8 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.log
+import boto3
+from dotenv import load_dotenv
 
 from jinja2 import \
   Environment, PackageLoader, select_autoescape
@@ -12,6 +14,17 @@ ENV = Environment(
   loader=PackageLoader('myapp', 'templates'),
   autoescape=select_autoescape(['html', 'xml'])
 )
+
+
+load_dotenv('.env')
+
+SES_CLIENT = boto3.client(
+  'ses',
+  aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
+  aws_secret_access_key=os.environ.get('AWS_SECRET_KEY'),
+  region_name="us-east-1"
+)
+
 
 class TemplateHandler(tornado.web.RequestHandler):
   def render_template (self, tpl, context):
